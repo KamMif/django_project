@@ -1,4 +1,5 @@
 from django.contrib import admin
+from djangos_ll.models import Topic, Entry
 
-from djangos_ll.models import Topic
 admin.site.register(Topic)
+admin.site.register(Entry)
