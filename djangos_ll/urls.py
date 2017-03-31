@@ -9,4 +9,6 @@ urlpatterns = [
     url(r'^topics/$', views.topics, name='topics'),
     #Page for one them
     url(r'^topics/(?P<topic_id>\d+)/$', views.topic, name='topic'),
+    #Page for add new Topic
+    url(r'^new_topic/$', views.new_topic, name='new_topic')
 ]
