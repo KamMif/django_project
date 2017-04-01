@@ -1,2 +1,4 @@
-/ll_env/
+ll_env/
 /.idea
+__pycache__/
+*.sqlite3
