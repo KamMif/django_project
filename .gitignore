@@ -2,7 +2,12 @@ ll_env/
 <<<<<<< HEAD
 .idea
 .vscode
-*__pycache__/
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
 =======
 /.idea
 /.vscode
