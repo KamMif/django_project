@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Topic
+from .models import Topic, Entry
 from .forms import TopicForm, EntryForm
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
@@ -52,3 +52,18 @@ def new_entry(request, topic_id):
             return HttpResponseRedirect(reverse('djangos_ll:topic', args=[topic_id]))
     context = {'topic': topic, 'form': form}
     return render(request, 'djangos_ll/new_entry.html', context)
+
+def edit_entry(request, entry_id):
+    """Edit exists entry"""
+    entry = Entry.objects.get(id=entry_id)
+    topic = entry.topic
+
+    if request.method != 'POST':
+        form = EntryForm(instance=entry)
+    else:
+        form = EntryForm(instance=entry, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('djangos_ll:topic', args=[topic.id]))
+    context = {'entry': entry, 'topic': topic, 'form': form}
+    return render(request, 'djangos_ll/edit_entry.html', context)
