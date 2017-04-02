@@ -1,5 +1,5 @@
 ll_env/
 /.idea
 /.vscode
-djangos_ll/__pycache__/
+django_ll/__pycache__/
 *.sqlite3
