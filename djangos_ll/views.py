@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Topic
-from .forms import TopicForm
+from .forms import TopicForm, EntryForm
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
@@ -34,3 +34,21 @@ def new_topic(request):
             return HttpResponseRedirect(reverse('djangos_ll:topics'))
     context = {'form': form}
     return render(request, 'djangos_ll/new_topic.html', context)
+
+def new_entry(request, topic_id):
+    """Added new entry by id"""
+    topic = Topic.objects.get(id=topic_id)
+
+    if request.method != 'POST':
+        #add new empty form
+        form = EntryForm()
+    else:
+        #Send data POST
+        form = EntryForm(data=request.POST)
+        if form.is_valid():
+            new_entry = form.save(commit=False)
+            new_entry.topic = topic
+            new_entry.save()
+            return HttpResponseRedirect(reverse('djangos_ll:topic', args=[topic_id]))
+    context = {'topic': topic, 'form': form}
+    return render(request, 'djangos_ll/new_entry.html', context)
