@@ -34,7 +34,9 @@ def new_topic(request):
         #Data send
         form = TopicForm(request.POST)
         if form.is_valid():
-            form.save()
+            new_topic = form.save(commit=False)
+            new_topic.owner = request.user
+            new_topic.save()
             return HttpResponseRedirect(reverse('djangos_ll:topics'))
     context = {'form': form}
     return render(request, 'djangos_ll/new_topic.html', context)
