@@ -2,7 +2,7 @@ ll_env/
 <<<<<<< HEAD
 .idea
 .vscode
-__pycache__/
+*__pycache__/
 =======
 /.idea
 /.vscode
