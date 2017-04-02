@@ -3,6 +3,9 @@ ll_env/
 .idea
 .vscode
 # Byte-compiled / optimized / DLL files
+django_ll/__pycache__/
+djangos_ll/__pycache__
+users/__pycache__
 __pycache__/
 *.py[cod]
 
