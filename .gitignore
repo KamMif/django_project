@@ -1,5 +1,11 @@
 ll_env/
+<<<<<<< HEAD
 .idea
 .vscode
 __pycache__/
+=======
+/.idea
+/.vscode
+django_ll/__pycache__/
+>>>>>>> create_users_app
 *.sqlite3
